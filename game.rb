@@ -1,10 +1,12 @@
 class Game
 
   attr_accessor :secret_code
+  attr_reader :guesses
 
   def initialize
     @possible_colors = ['R','O','Y','G','B','W']
     @rows = 12
+    @guesses = 0
     @secret_code = generate_code(@possible_colors)
   end
 
@@ -21,6 +23,7 @@ class Game
 
   # takes guess as string, returns string of Bs and Ws
   def check_answer(user_guess)
+    add_guess
     answer_copy = @secret_code.dup
     feedback = ''
 
@@ -33,8 +36,15 @@ class Game
         answer_copy[answer_copy.index(char)] = nil
       end
     end
-
     feedback.chars.sort.join("")
+  end
+
+  def add_guess
+    @guesses += 1
+  end
+
+  def game_over?
+    @guesses == @rows
   end
 
 
