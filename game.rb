@@ -26,7 +26,6 @@ class Game
   # takes guess as string, returns string of Bs and Ws
   def check_answer(user_guess)
     add_guess
-    @guess_history << user_guess
     answer_copy = @secret_code.dup
     feedback = ''
 
@@ -39,6 +38,7 @@ class Game
         answer_copy[answer_copy.index(char)] = nil
       end
     end
+    @guess_history << {user_guess: user_guess, feedback: feedback}
     update_win(feedback)
     feedback.chars.sort.join("")
   end
