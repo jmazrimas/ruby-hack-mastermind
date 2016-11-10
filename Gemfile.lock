@@ -29,6 +29,7 @@ PLATFORMS
 DEPENDENCIES
   pry
   rspec
+  rspec-mocks
 
 BUNDLED WITH
    1.12.5
