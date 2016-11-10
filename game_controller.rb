@@ -6,23 +6,23 @@
   # send the response to the user
 require_relative "game_view"
 require_relative "game"
+require 'pry'
 
 class GameController
   attr_accessor :game_presenter, :game
 
   def initialize
     self.game_presenter = GameView.new 
-    self.game = Game.new(guess_limit)
+    self.game = Game.new(guess_limit.to_i)
   end
 
   def start_game
     response = ""
-    guess_number = 0
     
     until game.game_over?
       board = game.guess_history
       game_presenter.display_board(board)
-      game_presenter.send_prompt(guess_number)
+      game_presenter.send_prompt
       guess = game_presenter.get_user_feedback
       response = game.check_answer(guess)
       game_presenter.print_response(response)

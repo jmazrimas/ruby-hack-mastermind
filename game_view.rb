@@ -10,8 +10,8 @@ class GameView
     end
   end 
 
-  def send_prompt(guess_number)
-    puts "Please enter Guess #{guess_number}: "
+  def send_prompt
+    puts "Please enter Guess: "
   end
 
   def get_user_feedback

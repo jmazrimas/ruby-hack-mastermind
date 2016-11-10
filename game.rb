@@ -3,9 +3,9 @@ class Game
   attr_accessor :secret_code
   attr_reader :guess_count, :guess_history
 
-  def initialize
+  def initialize(guess_limit)
     @possible_colors = ['R','O','Y','G','B','W']
-    @rows = 12
+    @rows = guess_limit
     @guess_count = 0
     @guess_history = []
     @secret_code = generate_code(@possible_colors)
@@ -45,6 +45,8 @@ class Game
 
   def add_guess
     @guess_count += 1
+    puts @guess_count
+    puts @rows
   end
 
   def game_over?
