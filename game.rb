@@ -1,5 +1,7 @@
 class Game
 
+  attr_reader :secret_code
+
   def initialize
     @possible_colors = ['R','O','Y','G','B','W']
     @rows = 12
@@ -16,5 +18,12 @@ class Game
 
     secret_code
   end
+
+  # takes guess as string, returns string of Bs and Ws
+  def check_answer(user_guess)
+
+
+  end
+
 
 end
