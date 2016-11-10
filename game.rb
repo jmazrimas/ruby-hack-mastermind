@@ -1,6 +1,6 @@
 class Game
 
-  attr_reader :secret_code
+  attr_accessor :secret_code
 
   def initialize
     @possible_colors = ['R','O','Y','G','B','W']
@@ -21,8 +21,15 @@ class Game
 
   # takes guess as string, returns string of Bs and Ws
   def check_answer(user_guess)
+    feedback = ''
 
+    user_guess.each_char.with_index do |char, i|
+      if char == @secret_code[i]
+        feedback << "B"
+      end
+    end
 
+    feedback
   end
 
 
