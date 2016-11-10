@@ -41,10 +41,11 @@ describe "#game" do
     end
 
     it "keeps a record of guesses" do
+      expected_state = []
       3.times do
-        @game.check_answer("YYBG")
+        expected_state << {user_guess: "YYBG", feedback: @game.check_answer("YYBG")}
       end
-      expect(@game.guess_history).to eq(["YYBG","YYBG","YYBG"])
+      expect(@game.guess_history).to eq(expected_state)
     end
 
     it "returns true for game_over?" do
