@@ -33,11 +33,18 @@ describe "#game" do
       expect(@game.check_answer("YYBG")).to eq("BBBB")
     end
 
-    it "increments guesses after each guess" do
+    it "increments guess_count after each guess" do
       3.times do
         @game.check_answer("YYBG")
       end
-      expect(@game.guesses).to eq(3)
+      expect(@game.guess_count).to eq(3)
+    end
+
+    it "keeps a record of guesses" do
+      3.times do
+        @game.check_answer("YYBG")
+      end
+      expect(@game.guess_history).to eq(["YYBG","YYBG","YYBG"])
     end
 
     it "returns true for game_over?" do
