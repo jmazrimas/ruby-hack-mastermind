@@ -3,8 +3,15 @@ class GameView
     puts "You started a new game of Mastermind, enter the number of guesses (8, 10, 12): "
   end
 
-  def send_prompt(guess_number)
-    puts "Please enter Guess #{guess_number}: "
+  def display_board(board)
+    # board => [ {user_guess: "..." , feedback: "..."}, {...} ]
+    board.each do |row|
+      puts row[:user_guess] + "\t" + row[:feedback]
+    end
+  end 
+
+  def send_prompt
+    puts "Please enter Guess: "
   end
 
   def get_user_feedback
