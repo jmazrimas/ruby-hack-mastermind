@@ -8,6 +8,7 @@ class Game
     @rows = 12
     @guesses = 0
     @secret_code = generate_code(@possible_colors)
+    @user_wins = false
   end
 
   # returns random array
@@ -36,6 +37,7 @@ class Game
         answer_copy[answer_copy.index(char)] = nil
       end
     end
+    update_win(feedback)
     feedback.chars.sort.join("")
   end
 
@@ -45,6 +47,16 @@ class Game
 
   def game_over?
     @guesses == @rows
+  end
+
+  def user_wins?
+    @user_win
+  end
+
+  def update_win(feedback)
+    if feedback == "BBBB"
+      @user_win = true
+    end
   end
 
 
