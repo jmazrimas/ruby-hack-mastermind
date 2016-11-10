@@ -4,19 +4,23 @@
   # send user input to our game instance
   # get a response back from our game instance 
   # send the response to the user
+require_relative "game_view"
+require_relative "game"
+
 class GameController
-  attr_accessor :game_presenter, :game
+  attr_accessor :game_presenter, :game, :number_of_guesses
 
   def initialize
-    game_presenter = GameView.new 
-    game = Game.new
+    self.game_presenter = GameView.new 
+    self.game = Game.new
+  end
+
+  def specify_guess_limit
+    game_presenter.notify_game_start
+    self.number_of_guesses = game_presenter.get_user_feedback
   end
 
   def start_game
-    game_presenter.notify_game_start
-
-    number_of_guesses = game_presenter.get_user_feedback
-
     response = ""
     guess_number = 0
     
