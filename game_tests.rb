@@ -17,6 +17,16 @@ describe "#game" do
       expect(@game.check_answer("YYXX")).to eq("BB")
     end
 
+    it "will respond with a white peg" do
+      @game.secret_code = ["Y","Y","B","G"]
+      expect(@game.check_answer("YYGX")).to eq("BBW")
+    end
+
+    it "will return the answer in ordered form" do
+      @game.secret_code = ["Y","Y","B","G"]
+      expect(@game.check_answer("BYYG")).to eq("BBWW")
+    end
+
   end
 
 end
